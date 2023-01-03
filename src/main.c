@@ -17,9 +17,21 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+	if(res == 1) {
+	  fprintf( stderr, "Macierz osobliwa - dzielenie przez 0\n"); 
+	  return 0;
+	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
+		if(res == 1) {
+		  fprintf( stderr, "Błąd dzielenia przez 0 (element na diagonali = 0)\n");
+		  return 0;
+		}
+		if(res == 2){
+		  fprintf( stderr, "Błąd nieprawidłowych rozmiarów macierzy\n" );
+		  return 0;
+		}
 
 		printToScreen(x);
 	  freeMatrix(x);

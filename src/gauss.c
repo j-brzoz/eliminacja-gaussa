@@ -2,6 +2,7 @@
 #include "mat_io.h"
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
 
 /**
  * Zwraca 0 - elimnacja zakonczona sukcesem
@@ -32,7 +33,7 @@ int eliminate(Matrix *mat, Matrix *b){
 	 }
 
   	 for( int row = col+1; row < n; row++){ // row - przemieszczamy się po wierszach
-       if( mat->data[col][col] == 0)
+       if( mat->data[col][col] == 0) 
 	     return 1;
 	   double ratio = mat->data[row][col] / mat->data[col][col]; // colsub - przemieszczenie po colch celem substrakcji
 	   for( int colsub = 0; colsub < n; colsub++)
